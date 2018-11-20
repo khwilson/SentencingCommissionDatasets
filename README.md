@@ -8,6 +8,46 @@ The bad news: They are in a crazy fixed-width format and include SAS and SPSS sc
 
 So what can we do about it? Well, we can write a little converter that converts them all! These files will do that for you.
 
+## I just want the data
+
+It turns out the data is small enough that you can upload it to GitHub! However, it's lzma compressed. Here's how you can decompress them.
+
+### First, a warning
+
+These files are filled with tons of nulls. The typical file size compressed is around 10MB and uncompressed aroung 1.5GB. So so so many blank fields. Loading this directly into pandas on a small box will probably make your box sad. Instead, you should really look at the `usecols` kwarg of [pd.read_csv](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html).
+
+### Mac
+
+If you're using homebrew, just do
+
+```
+$ brew install xz
+```
+
+Then you can open the files by doing
+
+```
+$ unxz [FILENAME].xz
+```
+
+### Debian/Ubuntu
+
+First install xz utilties
+
+```
+$ sudo apt update && sudo apt install xz-utils
+```
+
+Then you should be able to open files thus
+
+```
+$ xz -d [FILENAME].xz
+```
+
+### Windows
+
+Both 7zip and WinZip will open these files for you. Download and install them at your leisure.
+
 ## Requirements
 
 This is script has only been tested with Python 3 and it assumes you have `click` installed. But this is just for progress bars, so you can comment out those lines if you want.
