@@ -4,6 +4,9 @@ import sys
 import tempfile
 import zipfile
 
+import click
+
+
 def read_columns(filename):
   columns = []
   with open(filename) as f:
@@ -64,22 +67,27 @@ def convert_file(filename):
     with open(outfilename, 'wt') as outfile:
       writer = csv.writer(outfile)
       writer.writerow([col['name'] for col in columns])
-      with open(datpath) as infile:
-        for row_num, line in enumerate(infile):
-          readrow = []
-          for col in columns:
-            val = line[col['start'] - 1:col['end']].strip()
-            if val and not col['is_char']:
-              if '.' in val:
-                val = float(val)
-              else:
-                val = int(val)
-            readrow.append(val)
-          writer.writerow(readrow)
+      with click.progressbar(length=os.stat(datpath).st_size) as bar:
+        with open(datpath, 'rb') as infile:
+          for line in infile:
+            bar.update(len(line))
+            line = line.decode('utf8')
+            readrow = []
+            for col in columns:
+              val = line[col['start'] - 1:col['end']].strip()
+              if val and not col['is_char']:
+                if '.' in val:
+                  val = float(val)
+                else:
+                  val = int(val)
+              readrow.append(val)
+            writer.writerow(readrow)
+
 
 def main():
-  filename = sys.argv[1]
-  convert_file(filename)
+  for filename in sys.argv[1:]:
+    convert_file(filename)
+
 
 if __name__ == '__main__':
   main()
