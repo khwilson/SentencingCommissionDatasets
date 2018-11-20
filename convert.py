@@ -137,7 +137,7 @@ def convert_file(filename):
                 if '.' in val:
                   val = float(val)
                 else:
-                  val = int(val)
+                  val = int(float(val))  # Handle 6e+10
               readrow.append(val)
 
             # Write out the row
