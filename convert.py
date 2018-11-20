@@ -115,6 +115,7 @@ def convert_file(filename):
 
     # Open the output file
     outfilename = filename[:-4] + '.csv'
+    badlines = []
     with open(outfilename, 'wt') as outfile:
       # Write the column headers
       writer = csv.writer(outfile)
@@ -125,8 +126,8 @@ def convert_file(filename):
         with open(datpath, 'rb') as infile:
           for line in infile:
             bar.update(len(line))
-            line = line.decode('utf8')
-            
+            line = line.decode('latin1')
+
             # Read in a single row
             readrow = []
             for col in columns:
@@ -142,6 +143,11 @@ def convert_file(filename):
 
             # Write out the row
             writer.writerow(readrow)
+  if badlines:
+    badfilename = filename[:-4] + '.bad'
+    with open(badfilename, 'wb') as f:
+      for line in badlines:
+        f.write(line)
 
 
 def main():
