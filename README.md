@@ -1,6 +1,6 @@
 # Converting Sentencing Commission Files into CSVs
 
-The good news: The United States Sentencing Commission makes 
+The good news: The United States Sentencing Commission makes
 [_very_ detailed files](https://www.ussc.gov/research/datafiles/commission-datafiles#individual)
 available about sentencing in the US. :tada:
 
@@ -54,7 +54,7 @@ This is script has only been tested with Python 3 and it assumes you have `click
 
 ## Usage
 
-First you'll need to get the data from the Sentencing Commission. The script `getdata.sh` gives examples, and will itself download FY08-17's data files.
+First you'll need to get the data from the Sentencing Commission. The script `getdata.sh` gives examples, and will itself download FY08-20's data files.
 
 Next you'll need to point the script `convert.py` at the file. For instance,
 
