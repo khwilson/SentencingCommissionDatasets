@@ -1,5 +1,6 @@
 #!/bin/bash
 
+wget https://www.ussc.gov/sites/default/files/zip/opafy20nid.zip
 wget https://www.ussc.gov/sites/default/files/zip/opafy19nid.zip
 wget https://www.ussc.gov/sites/default/files/zip/opafy18nid.zip
 wget https://www.ussc.gov/sites/default/files/zip/opafy17-nid.zip
