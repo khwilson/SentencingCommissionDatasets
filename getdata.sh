@@ -5,6 +5,7 @@ wget https://www.ussc.gov/sites/default/files/zip/ussc_sup_fy14.zip
 wget https://www.ussc.gov/sites/default/files/zip/ussc_sup_fy15.zip
 wget https://www.ussc.gov/sites/default/files/zip/ussc_sup_fy16.zip
 wget https://www.ussc.gov/sites/default/files/zip/ussc_sup_fy17.zip
+wget https://www.ussc.gov/sites/default/files/zip/opafy22nid.zip
 wget https://www.ussc.gov/sites/default/files/zip/opafy21nid.zip
 wget https://www.ussc.gov/sites/default/files/zip/opafy20nid.zip
 wget https://www.ussc.gov/sites/default/files/zip/opafy19nid.zip
